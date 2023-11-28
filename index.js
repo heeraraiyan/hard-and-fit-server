@@ -30,11 +30,19 @@ async function run() {
     await client.connect();
 
     const featureCollection = client.db("hardDb").collection("features");
+    const trainerCollection = client.db("hardDb").collection("trainers");
 
     app.get('/features', async(req, res) =>{
         const result = await featureCollection.find().toArray();
         res.send(result);
     })
+
+    app.get('/trainers', async(req, res) =>{
+        const result = await trainerCollection.find().toArray();
+        res.send(result);
+    })
+
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
