@@ -41,6 +41,11 @@ async function run() {
       res.send(result);
     })
 
+    app.get('/subscribes', async(req, res) =>{
+        const result = await subscribeCollection.find().toArray();
+        res.send(result);
+    })
+
 
     // user related 
 
