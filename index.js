@@ -33,7 +33,21 @@ async function run() {
     const trainerCollection = client.db("hardDb").collection("trainers");
     const userCollection = client.db("hardDb").collection("users");
     const subscribeCollection = client.db("hardDb").collection("subscribes");
+    const beTrainerCollection = client.db("hardDb").collection("betrainers");
 
+
+    // betrainers 
+
+
+    app.post('/betrainers',async(req,res)=>{
+      const betrainer = req.body;
+      const result = await beTrainerCollection.insertOne(betrainer);
+      res.send(result);
+    })
+
+
+
+    // subscribes 
 
     app.post('/subscribes',async(req,res)=>{
       const subscriber = req.body;
