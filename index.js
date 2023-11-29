@@ -32,6 +32,15 @@ async function run() {
     const featureCollection = client.db("hardDb").collection("features");
     const trainerCollection = client.db("hardDb").collection("trainers");
     const userCollection = client.db("hardDb").collection("users");
+    const subscribeCollection = client.db("hardDb").collection("subscribes");
+
+
+    app.post('/subscribes',async(req,res)=>{
+      const subscriber = req.body;
+      const result = await subscribeCollection.insertOne(subscriber);
+      res.send(result);
+    })
+
 
     // user related 
 
