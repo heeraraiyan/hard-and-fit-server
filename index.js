@@ -46,6 +46,12 @@ async function run() {
 
     // betrainers 
 
+    app.get('/betrainers', async(req, res) =>{
+      const result = await beTrainerCollection.find().toArray();
+      res.send(result);
+  })
+
+
 
     app.post('/betrainers',async(req,res)=>{
       const betrainer = req.body;
