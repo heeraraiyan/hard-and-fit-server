@@ -36,7 +36,13 @@ async function run() {
     const userCollection = client.db("hardDb").collection("users");
     const subscribeCollection = client.db("hardDb").collection("subscribes");
     const beTrainerCollection = client.db("hardDb").collection("betrainers");
+    const postCollection = client.db("hardDb").collection("posts");
 
+
+    app.get('/posts', async(req, res) =>{
+      const result = await postCollection.find().toArray();
+      res.send(result);
+  })
 
     // betrainers 
 
